@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Mi Tarjeta Los Cuates</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dorado: #E67E22;
+            --dorado-dark: #d35400;
+            --rojo: #C0392B;
+            --verde: #27AE60;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background:
+                linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+                url('images/logo.jpeg') center center / cover no-repeat fixed;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px 16px;
+        }
+
+        /* ── CARD ── */
+        .card {
+            background: linear-gradient(160deg, rgba(24,10,0,0.90), rgba(10,4,0,0.94) 60%);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 2px solid var(--dorado);
+            border-radius: 28px;
+            padding: 36px 28px 28px;
+            max-width: 360px;
+            width: 100%;
+            box-shadow:
+                0 0 60px rgba(230,126,34,0.15),
+                0 20px 60px rgba(0,0,0,0.7);
+            text-align: center;
+            animation: fadeUp 0.5s ease;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── LOGO / BRAND ── */
+        .logo-wrap { margin-bottom: 4px; }
+        .logo-img {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            border: 3px solid var(--dorado);
+            object-fit: cover;
+            margin-bottom: 10px;
+            box-shadow: 0 0 20px rgba(230,126,34,0.3);
+        }
+        .brand {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.2rem;
+            color: var(--dorado);
+            letter-spacing: 4px;
+            line-height: 1;
+        }
+        .brand-sub {
+            font-size: 0.6rem;
+            color: #555;
+            letter-spacing: 3.5px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        /* ── DIVIDER ── */
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--dorado), transparent);
+            margin: 16px 0;
+            opacity: 0.4;
+        }
+
+        /* ── CLIENT INFO ── */
+        .client-name {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 3px;
+            letter-spacing: 0.5px;
+        }
+        .client-id {
+            font-size: 0.65rem;
+            color: #444;
+            font-family: monospace;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+        }
+
+        /* ── STAMPS ── */
+        .stamps-label {
+            font-size: 0.65rem;
+            color: #666;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+        .stamps-row {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+        .stamp {
+            width: 46px; height: 46px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+        }
+        .stamp.empty {
+            background: #0e0600;
+            border: 2px dashed #2a1500;
+        }
+        .stamp.empty::after {
+            content: '';
+            width: 14px; height: 14px;
+            border-radius: 50%;
+            background: #1a0a00;
+            display: block;
+        }
+        .stamp.filled {
+            background: radial-gradient(circle at 32% 32%, #fff3cc, #E67E22 45%, #8B4513);
+            border: 2px solid var(--dorado);
+            font-size: 1.4rem;
+            box-shadow: 0 0 14px rgba(230,126,34,0.5);
+        }
+        .stamp.filled.animate { animation: stampPop 0.6s ease forwards; }
+        @keyframes stampPop {
+            0%   { transform: scale(0) rotate(-40deg); opacity: 0; }
+            55%  { transform: scale(1.35) rotate(8deg); }
+            75%  { transform: scale(0.95); }
+            100% { transform: scale(1) rotate(0); opacity: 1; }
+        }
+
+        /* ── PROGRESS BAR ── */
+        .progress-wrap {
+            background: #1a0a00;
+            border-radius: 4px;
+            height: 4px;
+            margin: 0 4px 10px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--dorado-dark), var(--dorado));
+            border-radius: 4px;
+            transition: width 0.9s ease;
+        }
+        .progress-text {
+            font-size: 0.78rem;
+            color: #666;
+            margin-bottom: 22px;
+        }
+        .progress-text strong { color: var(--dorado); font-size: 0.95rem; }
+
+        /* ── PRIZE INFO (not yet earned) ── */
+        .prize-info {
+            background: #0a0400;
+            border: 1px solid #1e1000;
+            border-radius: 14px;
+            padding: 14px 16px;
+        }
+        .prize-info p {
+            font-size: 0.65rem;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 5px;
+        }
+        .prize-info strong {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+            color: #777;
+            letter-spacing: 2px;
+        }
+
+        /* ── PRIZE READY ── */
+        .prize-ready {
+            background: linear-gradient(135deg, #1a0400, #0d0200);
+            border: 2px solid var(--rojo);
+            border-radius: 18px;
+            padding: 24px 20px;
+            text-align: center;
+            animation: glowRojo 2s infinite;
+        }
+        @keyframes glowRojo {
+            0%,100% { box-shadow: 0 0 20px rgba(192,57,43,0.3); }
+            50%      { box-shadow: 0 0 44px rgba(192,57,43,0.55); }
+        }
+        .prize-ready .pr-emoji {
+            font-size: 3.5rem;
+            display: block;
+            margin-bottom: 8px;
+            animation: bounce 1.2s infinite;
+        }
+        @keyframes bounce {
+            0%,100% { transform: translateY(0); }
+            50%      { transform: translateY(-8px); }
+        }
+        .prize-ready h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--rojo);
+            letter-spacing: 3px;
+            margin-bottom: 6px;
+        }
+        .prize-ready p {
+            font-size: 0.82rem;
+            color: #ff9966;
+            line-height: 1.5;
+        }
+        .prize-ready p strong {
+            display: block;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            color: #ffaa77;
+            letter-spacing: 1.5px;
+            margin-top: 4px;
+        }
+
+        /* ── REFRESH DOT ── */
+        .refresh-dot {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            margin-top: 22px;
+            font-size: 0.62rem;
+            color: #2a1500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: #2a1500;
+            animation: blink 3s infinite;
+        }
+        @keyframes blink {
+            0%,85%,100% { background: #2a1500; transform: scale(1); }
+            90%          { background: var(--dorado); transform: scale(1.4); }
+        }
+
+        /* ── NOT FOUND ── */
+        .not-found { text-align: center; padding: 16px; }
+        .not-found h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: #333;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+        .not-found p { color: #555; font-size: 0.85rem; line-height: 1.6; }
+
+        /* ── CANJES BADGE ── */
+        .canjes-badge {
+            display: inline-block;
+            background: rgba(230,126,34,0.06);
+            border: 1px solid rgba(230,126,34,0.15);
+            color: #888;
+            font-size: 0.65rem;
+            padding: 3px 12px;
+            border-radius: 20px;
+            margin-top: 6px;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card" id="card">
+    <!-- Rendered by JS -->
+</div>
+
+<script>
+const API_URL = 'https://script.google.com/macros/s/AKfycbzZE0Tr6bVMtgxRHxeA5miq0h4CMiSnz_ZNr6f9PpXN64OEInlQf9W2v4OKpUb84KFRzQ/exec';
+let lastSellos = -1;
+let clientId   = null;
+
+function apiGet(action, params) {
+    return new Promise((resolve, reject) => {
+        const cb = 'cuates_t_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6);
+        const tag = document.createElement('script');
+        const qs = Object.entries(Object.assign({ action }, params || {}))
+            .map(([k, v]) => k + '=' + encodeURIComponent(v)).join('&');
+        tag.src = API_URL + '?' + qs + '&callback=' + cb;
+        const timer = setTimeout(() => {
+            delete window[cb];
+            if (tag.parentNode) document.head.removeChild(tag);
+            reject(new Error('Timeout'));
+        }, 12000);
+        window[cb] = (data) => {
+            clearTimeout(timer);
+            delete window[cb];
+            if (tag.parentNode) document.head.removeChild(tag);
+            resolve(data);
+        };
+        tag.onerror = () => { clearTimeout(timer); delete window[cb]; reject(new Error('Error de red')); };
+        document.head.appendChild(tag);
+    });
+}
+
+async function getCliente(id) {
+    const result = await apiGet('getCliente', { id });
+    return (result && result.cliente) ? result.cliente : null;
+}
+
+function renderCard(cliente, animateNew = false) {
+    const card    = document.getElementById('card');
+    const sellos  = Math.min(cliente.sellos, 6);
+    const pct     = (sellos / 6) * 100;
+    const hasPrize = cliente.sellos >= 6;
+
+    let stampsHTML = '';
+    for (let i = 0; i < 6; i++) {
+        const filled   = i < sellos;
+        const isNewOne = animateNew && i === sellos - 1 && filled;
+        stampsHTML += `<div class="stamp ${filled ? 'filled' + (isNewOne ? ' animate' : '') : 'empty'}">${filled ? '🌮' : ''}</div>`;
+    }
+
+    card.innerHTML = `
+        <div class="logo-wrap">
+            <img src="images/logo.jpeg" alt="Los Cuates" class="logo-img" onerror="this.style.display='none'">
+            <div class="brand">LOS CUATES</div>
+            <div class="brand-sub">Tarjeta Cliente Frecuente</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="client-name">${escHtml(cliente.nombre)}</div>
+        <div class="client-id">${escHtml(cliente.id)}</div>
+        ${cliente.canjes > 0 ? `<div class="canjes-badge">🎁 ${cliente.canjes} canje${cliente.canjes > 1 ? 's' : ''} previo${cliente.canjes > 1 ? 's' : ''}</div><br><br>` : ''}
+
+        <div class="stamps-label">Mis sellos acumulados</div>
+        <div class="stamps-row">${stampsHTML}</div>
+        <div class="progress-wrap">
+            <div class="progress-fill" style="width:${pct}%"></div>
+        </div>
+        <div class="progress-text"><strong>${sellos}</strong> de 6 sellos</div>
+
+        ${hasPrize ? `
+        <div class="prize-ready">
+            <span class="pr-emoji">🌮</span>
+            <h2>¡Premio Listo!</h2>
+            <p>Muéstrale esta pantalla al cajero para reclamar tu<strong>TACO DE BIRRIA GRATIS</strong></p>
+        </div>
+        ` : `
+        <div class="prize-info">
+            <p>Al completar 6 sellos ganas:</p>
+            <strong>🌮 Taco de Birria Gratis</strong>
+        </div>
+        `}
+
+        <div class="refresh-dot">
+            <div class="dot"></div>
+            Actualizando en tiempo real
+        </div>
+    `;
+}
+
+function renderNotFound() {
+    document.getElementById('card').innerHTML = `
+        <div class="not-found">
+            <div style="font-size:3rem;margin-bottom:16px">🎫</div>
+            <h2>Tarjeta no encontrada</h2>
+            <p>Pídele al cajero que te registre como cliente frecuente de Los Cuates para obtener tu tarjeta de sellos.</p>
+        </div>
+    `;
+}
+
+function escHtml(str) {
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+}
+
+async function init() {
+    const params = new URLSearchParams(window.location.search);
+    clientId = params.get('id');
+    if (!clientId) { renderNotFound(); return; }
+
+    document.getElementById('card').innerHTML =
+        '<div style="text-align:center;padding:40px 16px;color:#444;font-size:0.85rem">Cargando tarjeta...</div>';
+
+    try {
+        const cliente = await getCliente(clientId);
+        if (!cliente) { renderNotFound(); return; }
+        lastSellos = cliente.sellos;
+        renderCard(cliente);
+    } catch(e) {
+        renderNotFound();
+        return;
+    }
+
+    setInterval(async () => {
+        try {
+            const updated = await getCliente(clientId);
+            if (!updated) return;
+            if (updated.sellos !== lastSellos) {
+                const animate = updated.sellos > lastSellos;
+                lastSellos = updated.sellos;
+                renderCard(updated, animate);
+            }
+        } catch(e) {}
+    }, 4000);
+}
+
+init();
+</script>
+</body>
+</html>

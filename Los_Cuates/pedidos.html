@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Los Cuates - Tomar Pedido</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="sistema.css">
+    <style>
+        /* Fondo amarillo fijo para pedidos — más cómodo para el mesero */
+        body { background: #FFD60A !important; background-image: none !important; }
+    </style>
+    <style>
+        .sellos-section { margin-top: 10px; border: 1px solid rgba(255,214,10,0.14); border-radius: 12px; overflow: hidden; }
+        .sellos-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 12px 14px; background: transparent;
+            cursor: pointer; font-family: 'Anton', sans-serif;
+            font-size: 1rem; letter-spacing: 1.5px; color: rgba(255,248,240,0.4);
+            user-select: none; transition: background 0.2s;
+        }
+        .sellos-header:hover { background: rgba(255,214,10,0.06); color: rgba(255,248,240,0.7); }
+        .sellos-header i { transition: transform 0.25s; font-size: 0.8rem; }
+        .sellos-header.open { color: #FFD60A; border-bottom: 1px solid rgba(255,214,10,0.14); }
+        .sellos-header.open i { transform: rotate(180deg); }
+        .sellos-body { padding: 12px; display: none; background: #0E0905; }
+        .sellos-body.open { display: block; }
+        .sellos-input {
+            width: 100%; padding: 10px 12px; background: #181008;
+            border: 1px solid rgba(255,214,10,0.14); border-radius: 8px; color: #FFF8F0;
+            font-family: 'Inter', sans-serif; font-size: 0.88rem;
+            outline: none; margin-bottom: 8px; transition: border-color 0.2s;
+        }
+        .sellos-input:focus { border-color: #D4800A; }
+        .sellos-input::placeholder { color: rgba(255,248,240,0.25); }
+        .sello-result-item {
+            padding: 10px 12px; background: #181008; border: 1px solid rgba(255,214,10,0.12);
+            border-radius: 8px; margin-bottom: 6px; cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center;
+            transition: border-color 0.2s; font-size: 0.88rem;
+        }
+        .sello-result-item:hover { border-color: #FFD60A; }
+        .sello-result-nombre { font-weight: 600; color: #FFF8F0; }
+        .sello-result-info { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: rgba(255,248,240,0.4); margin-top: 2px; }
+        .sello-result-stamps { font-size: 0.9rem; letter-spacing: 1px; }
+        .sello-cliente-panel { background: #181008; border: 1px solid rgba(255,214,10,0.35); border-radius: 10px; padding: 14px; }
+        .sello-cliente-nombre { font-family: 'Anton', sans-serif; font-size: 1.35rem; color: #FFD60A; letter-spacing: 1.5px; margin-bottom: 2px; }
+        .sello-cliente-info { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: rgba(255,248,240,0.4); margin-bottom: 12px; }
+        .sello-stamps-row { display: flex; gap: 5px; margin-bottom: 12px; }
+        .sello-stamp { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; }
+        .sello-stamp.empty { background: #0E0905; border: 2px dashed rgba(255,214,10,0.2); }
+        .sello-stamp.filled { background: radial-gradient(circle at 35% 35%, #FFE878, #FFD60A, #D4800A); border: 2px solid #FFD60A; }
+        .sello-btn-row { display: flex; gap: 8px; }
+        .btn-agregar-sello {
+            flex: 1; padding: 11px 8px;
+            background: linear-gradient(135deg, #C0392B, #96281B);
+            color: #FFF8F0; border: none; border-radius: 8px;
+            font-family: 'Anton', sans-serif; font-size: 1rem;
+            letter-spacing: 1.5px; cursor: pointer; transition: transform 0.15s;
+        }
+        .btn-agregar-sello:active { transform: scale(0.97); }
+        .btn-agregar-sello:disabled { opacity: 0.4; cursor: not-allowed; }
+        .btn-otro-cliente {
+            padding: 11px 12px; background: transparent; border: 1px solid rgba(255,248,240,0.12);
+            color: rgba(255,248,240,0.4); border-radius: 8px; font-family: 'Inter', sans-serif;
+            font-size: 0.82rem; cursor: pointer; transition: all 0.2s; white-space: nowrap;
+        }
+        .btn-otro-cliente:hover { border-color: rgba(255,248,240,0.3); color: #FFF8F0; }
+        .sello-prize-banner {
+            background: rgba(192,57,43,0.12);
+            border: 1px solid #C0392B; border-radius: 8px; padding: 10px 12px;
+            text-align: center; margin-bottom: 10px;
+            font-family: 'Anton', sans-serif; font-size: 1rem;
+            color: #ff9966; letter-spacing: 1.5px;
+        }
+    </style>
+</head>
+<body>
+    <header class="sistema-header">
+        <div style="display:flex;align-items:center;gap:14px;">
+            <img src="images/logo.jpeg" alt="Los Cuates" class="logo">
+            <h1>TOMAR PEDIDO</h1>
+        </div>
+        <nav class="header-nav">
+            <a href="pedidos.html" class="nav-btn active">Pedidos</a>
+            <a href="cocina.html" class="nav-btn">Cocina</a>
+            <a href="domicilio.html" class="nav-btn">Para Pago</a>
+            <a href="cierre.html" class="nav-btn">Cierre</a>
+            <a href="clientes.html" class="nav-btn">Clientes</a>
+            <a href="inventario.html" class="nav-btn">Inventario</a>
+            <a href="index.html" class="nav-btn">Menú</a>
+            <button class="nav-btn" id="btnActualizarPrecios" onclick="actualizarPrecios()" title="Actualizar precios">🔄</button>
+        </nav>
+    </header>
+
+    <div class="sistema-container">
+        <section class="productos-section" id="productosSection"></section>
+
+        <aside class="pedido-panel" id="pedidoPanel">
+            <div class="pedido-panel-toggle" onclick="togglePanel()">
+                <div class="toggle-info">
+                    <i class="fas fa-chevron-up"></i>
+                    <span id="toggleText">Ver Pedido</span>
+                </div>
+                <span id="toggleTotal" class="toggle-total"></span>
+            </div>
+            <h2 class="pedido-titulo"><i class="fas fa-receipt"></i> Pedido Actual</h2>
+            <div class="pedido-items" id="pedidoItems">
+                <div class="pedido-vacio">
+                    <i class="fas fa-utensils" style="font-size:2em;margin-bottom:10px;display:block;"></i>
+                    Agrega productos al pedido
+                </div>
+            </div>
+            <div class="pedido-total" id="pedidoTotal" style="display:none;">
+                <div class="total-linea"><span>TOTAL:</span><span id="totalValor">$0</span></div>
+            </div>
+            <div class="pedido-notas">
+                <div class="tipo-pedido-toggle">
+                    <div class="tipo-check" id="llevarLabel" onclick="seleccionarTipo('llevar')">
+                        <i class="fas fa-bag-shopping"></i> Para llevar
+                    </div>
+                    <div class="tipo-check" id="comerLabel" onclick="seleccionarTipo('comer')">
+                        <i class="fas fa-utensils"></i> Para comer acá
+                    </div>
+                    <div class="tipo-check" id="domicilioLabel" onclick="seleccionarTipo('domicilio')">
+                        <i class="fas fa-motorcycle"></i> Domicilio
+                    </div>
+                    <div class="tipo-check tipo-check-costo" id="costoLabel" onclick="seleccionarTipo('costo')">
+                        <i class="fas fa-handshake"></i> Al Costo
+                    </div>
+                </div>
+                <div id="bannerCosto" style="display:none;background:rgba(192,57,43,0.12);border:1px solid var(--rojo);border-radius:8px;padding:8px 12px;text-align:center;color:#ff9966;font-size:0.82rem;font-weight:600;letter-spacing:1px;margin-top:6px;">
+                    🤝 MODO AL COSTO ACTIVO
+                </div>
+                <textarea id="pedidoNotas" placeholder="Notas del pedido (sin cebolla, extra picante, etc.)"></textarea>
+            </div>
+            <button class="btn-enviar" id="btnEnviar" disabled onclick="enviarPedido()">
+                <i class="fas fa-paper-plane"></i> ENVIAR A COCINA
+            </button>
+            <button class="btn-limpiar" onclick="limpiarPedido()">
+                <i class="fas fa-trash"></i> Limpiar Pedido
+            </button>
+
+            <div class="sellos-section">
+                <div class="sellos-header" id="sellosHeader" onclick="toggleSellos()">
+                    <span>🌮 &nbsp;Sello al Cliente</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="sellos-body" id="sellosBody">
+                    <div id="sellosBuscadorWrap">
+                        <input class="sellos-input" id="sellosBuscar"
+                            placeholder="🔍 Buscar cliente por nombre o ID..."
+                            oninput="buscarClienteSello(this.value)" autocomplete="off">
+                        <div id="sellosResultados"></div>
+                    </div>
+                    <div id="selloClientePanel" style="display:none">
+                        <div class="sello-prize-banner" id="selloPrizeBanner" style="display:none">
+                            🌮 ¡TARJETA COMPLETA! — CANJEAR EN PANEL DE CLIENTES
+                        </div>
+                        <div class="sello-cliente-panel">
+                            <div class="sello-cliente-nombre" id="selloNombre"></div>
+                            <div class="sello-cliente-info" id="selloInfo"></div>
+                            <div class="sello-stamps-row" id="selloStampsRow"></div>
+                            <div class="sello-btn-row">
+                                <button class="btn-agregar-sello" id="btnAgregarSello" onclick="agregarSelloEnPedidos()">
+                                    🌮 &nbsp;Agregar Sello
+                                </button>
+                                <button class="btn-otro-cliente" onclick="limpiarClienteSello()">← Otro</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script src="sistema.js"></script>
+    <script>
+        let pedidoActual = [];
+        let tipoPedido = null;
+        let modoCosto = false;
+        let COSTOS = {};
+
+        document.addEventListener('DOMContentLoaded', async function() {
+            if (!CUATES.apiConfigurada()) {
+                CUATES.mostrarConfigPendiente(document.getElementById('productosSection'));
+                return;
+            }
+            const productos = await CUATES.cargarProductos();
+            if (productos && productos.length) {
+                productos.forEach(p => { COSTOS[p.id] = p.costo || 0; });
+            }
+            cargarProductos();
+            CUATES.sincronizarPedidosLocales();
+        });
+
+        async function actualizarPrecios() {
+            const btn = document.getElementById('btnActualizarPrecios');
+            btn.textContent = '⏳'; btn.disabled = true;
+            const productos = await CUATES.cargarProductos(true);
+            if (productos && productos.length) {
+                productos.forEach(p => { COSTOS[p.id] = p.costo || 0; });
+                cargarProductos();
+            }
+            btn.textContent = '🔄'; btn.disabled = false;
+        }
+
+        function cargarProductos() {
+            const container = document.getElementById('productosSection');
+            container.innerHTML = '';
+            Object.keys(CUATES.MENU).forEach(categoria => {
+                const productos = CUATES.MENU[categoria];
+                const nombreCat = CUATES.CATEGORIAS_NOMBRES[categoria];
+                const icono = CUATES.CATEGORIAS_ICONOS[categoria];
+                container.innerHTML += `
+                    <h3 class="categoria-titulo"><i class="fas ${icono}"></i> ${nombreCat}</h3>
+                    <div class="productos-grid" id="grid-${categoria}">
+                        ${productos.map(p => `
+                            <button class="producto-btn" data-id="${p.id}" onclick="agregarProducto('${p.id}')">
+                                <div class="producto-nombre">${p.nombre}</div>
+                                <div class="producto-precio">${p.precio > 0 ? CUATES.formatearPrecio(p.precio) : 'Consultar'}</div>
+                            </button>
+                        `).join('')}
+                    </div>`;
+            });
+        }
+
+        function buscarProducto(id) {
+            for (const cat of Object.values(CUATES.MENU)) {
+                const p = cat.find(p => p.id === id);
+                if (p) return p;
+            }
+            return null;
+        }
+
+        function agregarProducto(id) {
+            const producto = buscarProducto(id);
+            if (!producto) return;
+            const existente = pedidoActual.find(item => item.id === id);
+            if (existente) {
+                existente.cantidad++;
+            } else {
+                const precioVenta = producto.precio;
+                const precioCosto = COSTOS[producto.id] || precioVenta;
+                pedidoActual.push({
+                    id: producto.id, nombre: producto.nombre,
+                    precio: modoCosto ? precioCosto : precioVenta,
+                    precioVenta, precioCosto, cantidad: 1
+                });
+            }
+            const btn = document.querySelector(`[data-id="${id}"]`);
+            if (btn) { btn.classList.add('added'); setTimeout(() => btn.classList.remove('added'), 300); }
+            CUATES.vibrar();
+            actualizarPanelPedido();
+        }
+
+        function modificarCantidad(id, delta) {
+            const item = pedidoActual.find(i => i.id === id);
+            if (!item) return;
+            item.cantidad += delta;
+            if (item.cantidad <= 0) pedidoActual = pedidoActual.filter(i => i.id !== id);
+            CUATES.vibrar(30);
+            actualizarPanelPedido();
+        }
+
+        function actualizarPanelPedido() {
+            const container = document.getElementById('pedidoItems');
+            const totalContainer = document.getElementById('pedidoTotal');
+            const btnEnviar = document.getElementById('btnEnviar');
+            const toggleText = document.getElementById('toggleText');
+            const toggleTotal = document.getElementById('toggleTotal');
+
+            if (pedidoActual.length === 0) {
+                container.innerHTML = `<div class="pedido-vacio"><i class="fas fa-utensils" style="font-size:2em;margin-bottom:10px;display:block;"></i>Agrega productos al pedido</div>`;
+                totalContainer.style.display = 'none';
+                btnEnviar.disabled = true;
+                toggleText.textContent = 'Ver Pedido';
+                if (toggleTotal) toggleTotal.textContent = '';
+                return;
+            }
+
+            container.innerHTML = pedidoActual.map(item => `
+                <div class="pedido-item">
+                    <div class="pedido-item-info">
+                        <div class="pedido-item-nombre">${item.nombre}</div>
+                        <div class="pedido-item-precio">${item.precio > 0 ? CUATES.formatearPrecio(item.precio) + ' c/u' : 'Precio a consultar'}</div>
+                    </div>
+                    <div class="pedido-item-controles">
+                        <button class="cantidad-btn menos" onclick="modificarCantidad('${item.id}',-1)">-</button>
+                        <span class="cantidad-numero">${item.cantidad}</span>
+                        <button class="cantidad-btn mas" onclick="modificarCantidad('${item.id}',1)">+</button>
+                    </div>
+                </div>`).join('');
+
+            const total = pedidoActual.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
+            document.getElementById('totalValor').textContent = CUATES.formatearPrecio(total);
+            totalContainer.style.display = 'block';
+            btnEnviar.disabled = false;
+            const cant = pedidoActual.reduce((sum, i) => sum + i.cantidad, 0);
+            toggleText.textContent = `Pedido (${cant})`;
+            if (toggleTotal) toggleTotal.textContent = CUATES.formatearPrecio(total);
+        }
+
+        async function enviarPedido() {
+            if (pedidoActual.length === 0) return;
+            const btnEnviar = document.getElementById('btnEnviar');
+            const notas = document.getElementById('pedidoNotas').value.trim();
+            const marcador = tipoPedido === 'llevar' ? '[PARA LLEVAR]' : tipoPedido === 'comer' ? '[PARA COMER ACA]' : tipoPedido === 'domicilio' ? '[DOMICILIO]' : tipoPedido === 'costo' ? '[AL COSTO]' : '';
+            const notasFinal = marcador ? `${marcador} ${notas}` : notas;
+            const total = pedidoActual.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
+            const items = pedidoActual.map(item => ({ nombre: item.nombre, cantidad: item.cantidad, precio: item.precio }));
+            btnEnviar.disabled = true;
+            btnEnviar.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ENVIANDO...';
+            try {
+                const resultado = await CUATES.crearPedido(items, total, notasFinal);
+                if (resultado.success) {
+                    CUATES.vibrar(200); CUATES.reproducirSonido('success');
+                    btnEnviar.innerHTML = '<i class="fas fa-check"></i> PEDIDO ENVIADO!';
+                    btnEnviar.style.background = '#27AE60';
+                    alert(`¡Pedido #${resultado.id} enviado a cocina!`);
+                    setTimeout(() => { limpiarPedido(); btnEnviar.innerHTML = '<i class="fas fa-paper-plane"></i> ENVIAR A COCINA'; btnEnviar.style.background = ''; }, 2000);
+                } else { throw new Error(resultado.error || 'Error desconocido'); }
+            } catch (error) {
+                CUATES.guardarPedidoLocal({ items, total, notas: notasFinal });
+                btnEnviar.innerHTML = '<i class="fas fa-exclamation-triangle"></i> GUARDADO LOCAL';
+                btnEnviar.style.background = '#E67E22'; btnEnviar.style.color = '#000';
+                alert('Error de conexión. El pedido se guardó localmente.');
+                setTimeout(() => { limpiarPedido(); btnEnviar.innerHTML = '<i class="fas fa-paper-plane"></i> ENVIAR A COCINA'; btnEnviar.style.background = ''; btnEnviar.style.color = ''; }, 3000);
+            }
+        }
+
+        function limpiarPedido() {
+            pedidoActual = []; tipoPedido = null; modoCosto = false;
+            document.getElementById('pedidoNotas').value = '';
+            ['llevarLabel','comerLabel','domicilioLabel','costoLabel'].forEach(id => document.getElementById(id).classList.remove('activo'));
+            document.getElementById('bannerCosto').style.display = 'none';
+            actualizarPanelPedido();
+            document.getElementById('pedidoPanel').classList.remove('expandido');
+        }
+
+        function seleccionarTipo(tipo) {
+            const eraModoCosto = modoCosto;
+            if (tipoPedido === tipo) {
+                tipoPedido = null; modoCosto = false;
+                ['llevarLabel','comerLabel','domicilioLabel','costoLabel'].forEach(id => document.getElementById(id).classList.remove('activo'));
+                document.getElementById('bannerCosto').style.display = 'none';
+                if (eraModoCosto) { pedidoActual.forEach(item => { item.precio = item.precioVenta; }); actualizarPanelPedido(); }
+                return;
+            }
+            tipoPedido = tipo; modoCosto = tipo === 'costo';
+            document.getElementById('llevarLabel').classList.toggle('activo', tipo === 'llevar');
+            document.getElementById('comerLabel').classList.toggle('activo', tipo === 'comer');
+            document.getElementById('domicilioLabel').classList.toggle('activo', tipo === 'domicilio');
+            document.getElementById('costoLabel').classList.toggle('activo', tipo === 'costo');
+            document.getElementById('bannerCosto').style.display = tipo === 'costo' ? 'block' : 'none';
+            if (eraModoCosto !== modoCosto) { pedidoActual.forEach(item => { item.precio = modoCosto ? item.precioCosto : item.precioVenta; }); actualizarPanelPedido(); }
+        }
+
+        function togglePanel() { document.getElementById('pedidoPanel').classList.toggle('expandido'); }
+
+        // ========== SELLO AL CLIENTE ==========
+        let selloClienteActual = null, selloSearchTimer = null, selloLoadingFlag = false;
+
+        function toggleSellos() {
+            const header = document.getElementById('sellosHeader');
+            const body = document.getElementById('sellosBody');
+            const open = header.classList.toggle('open');
+            body.classList.toggle('open', open);
+            if (open) document.getElementById('sellosBuscar').focus();
+        }
+
+        function buscarClienteSello(query) {
+            clearTimeout(selloSearchTimer);
+            const res = document.getElementById('sellosResultados');
+            if (query.length < 2) { res.innerHTML = ''; return; }
+            res.innerHTML = '<div style="color:#5D3F30;font-size:0.78rem;padding:6px 0">Buscando...</div>';
+            selloSearchTimer = setTimeout(() => ejecutarBusquedaSello(query), 400);
+        }
+
+        async function ejecutarBusquedaSello(query) {
+            const res = document.getElementById('sellosResultados');
+            try {
+                const data = await CUATES.apiGet('buscarClientes', { query });
+                const matches = (data && data.clientes) ? data.clientes : [];
+                if (matches.length === 0) { res.innerHTML = '<div style="color:#5D3F30;font-size:0.78rem;padding:6px 0">Sin resultados</div>'; return; }
+                res.innerHTML = matches.map(c => {
+                    const s = Math.min(c.sellos, 6);
+                    return `<div class="sello-result-item" onclick="seleccionarClienteSello('${c.id}')">
+                        <div><div class="sello-result-nombre">${esc(c.nombre)}</div><div class="sello-result-info">${c.id} · ${s}/6 sellos</div></div>
+                        <div class="sello-result-stamps">${'🌮'.repeat(s)}<span style="color:#2a1800">${'○'.repeat(6-s)}</span></div>
+                    </div>`;
+                }).join('');
+            } catch(e) { res.innerHTML = '<div style="color:var(--danger);font-size:0.78rem;padding:6px 0">Error de conexión</div>'; }
+        }
+
+        async function seleccionarClienteSello(id) {
+            document.getElementById('sellosResultados').innerHTML = '';
+            document.getElementById('sellosBuscar').value = '';
+            document.getElementById('sellosBuscadorWrap').style.display = 'none';
+            document.getElementById('selloClientePanel').style.display = 'block';
+            document.getElementById('selloNombre').textContent = 'Cargando...';
+            try {
+                const data = await CUATES.apiGet('getCliente', { id });
+                if (!data || !data.cliente) { limpiarClienteSello(); return; }
+                selloClienteActual = data.cliente;
+                renderSelloPanel(selloClienteActual);
+            } catch(e) { limpiarClienteSello(); }
+        }
+
+        function renderSelloPanel(c) {
+            const sellos = Math.min(c.sellos, 6);
+            document.getElementById('selloNombre').textContent = c.nombre;
+            document.getElementById('selloInfo').textContent = (c.telefono ? '📱 ' + c.telefono + ' · ' : '') + 'ID: ' + c.id + (c.canjes ? ' · 🎁 ' + c.canjes + ' canje(s)' : '');
+            const row = document.getElementById('selloStampsRow');
+            row.innerHTML = '';
+            for (let i = 0; i < 6; i++) {
+                const el = document.createElement('div');
+                el.className = 'sello-stamp ' + (i < sellos ? 'filled' : 'empty');
+                el.textContent = i < sellos ? '🌮' : '';
+                row.appendChild(el);
+            }
+            const hasPrize = c.sellos >= 6;
+            document.getElementById('selloPrizeBanner').style.display = hasPrize ? 'block' : 'none';
+            document.getElementById('btnAgregarSello').disabled = hasPrize || selloLoadingFlag;
+        }
+
+        async function agregarSelloEnPedidos() {
+            if (!selloClienteActual || selloLoadingFlag) return;
+            selloLoadingFlag = true;
+            const btn = document.getElementById('btnAgregarSello');
+            btn.disabled = true; btn.textContent = 'Guardando...';
+            try {
+                const result = await CUATES.apiPost({ action: 'agregarSello', id: selloClienteActual.id });
+                if (result.error) { btn.textContent = '❌ Error'; setTimeout(() => { btn.textContent = '🌮 Agregar Sello'; btn.disabled = false; selloLoadingFlag = false; }, 1800); return; }
+                selloClienteActual.sellos = result.sellos;
+                renderSelloPanel(selloClienteActual);
+                btn.textContent = '✅ Sello Agregado!';
+                btn.style.background = '#27AE60'; btn.style.color = '#fff';
+                setTimeout(() => { btn.textContent = '🌮 Agregar Sello'; btn.style.background = ''; btn.style.color = ''; btn.disabled = selloClienteActual.sellos >= 6; selloLoadingFlag = false; }, 1800);
+            } catch(e) { btn.textContent = '❌ Sin conexión'; setTimeout(() => { btn.textContent = '🌮 Agregar Sello'; btn.disabled = false; selloLoadingFlag = false; }, 2000); }
+        }
+
+        function limpiarClienteSello() {
+            selloClienteActual = null; selloLoadingFlag = false;
+            document.getElementById('selloClientePanel').style.display = 'none';
+            document.getElementById('sellosBuscadorWrap').style.display = 'block';
+            document.getElementById('sellosBuscar').value = '';
+            document.getElementById('sellosResultados').innerHTML = '';
+            document.getElementById('btnAgregarSello').textContent = '🌮 Agregar Sello';
+            document.getElementById('btnAgregarSello').style.background = '';
+            document.getElementById('btnAgregarSello').style.color = '';
+        }
+
+        function esc(str) { return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+    </script>
+</body>
+</html>

@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rinconcito Los Cuates — Menú</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Rozha+One&family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="top-bar">
+    <!-- Badge giratorio — esquina superior derecha -->
+    <div class="badge-circle">
+      <svg class="badge-ring" viewBox="0 0 110 110" aria-hidden="true">
+        <defs>
+          <path id="bp" d="M 55 55 m -40,0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0"/>
+        </defs>
+        <text><textPath href="#bp">RECIÉN HECHO · CON AMOR · DESDE 2019 · </textPath></text>
+      </svg>
+      <div class="badge-center">
+        <span class="badge-since">desde</span>
+        <span class="badge-year">2019</span>
+      </div>
+    </div>
+
+    <!-- Logo centrado prominente -->
+    <div class="logo-center">
+      <img src="images/logo.jpeg" alt="Rinconcito de Los Cuates" class="logo-main" onerror="this.style.display='none'">
+      <p class="brand-name">Rinconcito de Los Cuates</p>
+      <p class="hero-eyebrow">¡Bienvenidos! · Cocina mexicana hecha a mano</p>
+    </div>
+  </div>
+
+</header>
+
+<nav class="chips-nav" id="chipsNav" aria-label="Secciones del menú">
+  <button class="chip active" data-target="antojitos">Antojitos</button>
+  <button class="chip" data-target="dorilocos">Dorilocos</button>
+  <button class="chip" data-target="tacos">Tacos</button>
+  <button class="chip" data-target="burritos">Burritos</button>
+  <button class="chip" data-target="tortas">Tortas</button>
+  <button class="chip" data-target="especialidades">Especialidades</button>
+  <button class="chip" data-target="compartir">Pa' Compartir</button>
+  <button class="chip" data-target="bebidas">Bebidas</button>
+  <button class="chip" data-target="cocteles">Cocteles</button>
+</nav>
+
+<main>
+
+  <!-- ===== ANTOJITOS ===== -->
+  <section class="menu-section" id="antojitos" data-section="antojitos">
+    <div class="section-header">
+      <div>
+        <p class="section-eyebrow">Sección · 01</p>
+        <h2 class="section-title">Antojitos</h2>
+      </div>
+      <span class="section-count">03 items</span>
+    </div>
+
+    <div class="menu-item">
+      <div class="food-circle"><span class="circle-label">GUACA&shy;MOLE</span></div>
+      <div class="item-body">
+        <div class="item-row">
+          <h3 class="item-name">Canasticas de Guacamole</h3>
+          <span class="item-price">$11,000</span>
+        </div>
+        <p class="item-desc">Tortillas de maíz fritas rellenas de guacamole fresco</p>
+        <div class="item-tags" data-heat="1"><span class="tag tag-veg">VEG</span></div>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <div class="food-circle"><span class="circle-label">CHICHA&shy;RRÓN</span></div>
+      <div class="item-body">
+        <div class="item-row">
+          <h3 class="item-name">Canasticas de Chicharrón</h3>
+          <span class="item-price">$15,000</span>
+        </div>
+        <p class="item-desc">Tortillas de maíz fritas rellenas con chicharrón crujiente</p>
+        <div class="item-tags" data-heat="1"></div>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <div class="food-circle"><span class="circle-label">CAMA&shy;RONES</span></div>
+      <div class="item-body">
+        <div class="item-row">
+          <h3 class="item-name">Canasticas de Camarones</h3>
+          <span class="item-price">$17,000</span>
+        </div>
+        <p class="item-desc">Tortillas de maíz fritas rellenas con camarones en salsa mexicana y queso</p>
+        <div class="item-tags" data-heat="2"></div>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="papel" role="separator" aria-hidden="true"></div>
+
+  <!-- ===== DORILOCOS ===== -->
+  <section class="menu-section" id="dorilocos" data-section="dorilocos">
+    <div class="section-header">
+      <div>
+        <p class="section-eyebrow">Sección · 02</p>
+        <h2 class="section-title">Dorilocos</h2>
+      </div>
+      <span class="section-count">02 items</span>
+    </div>
+
+    <div class="menu-item">
+      <div class="food-circle"><span class="circle-label">DORI&shy;LOCOS</span></div>
+      <div class="item-body">
+        <div class="item-row">
+          <h3 class="item-name">Dorilocos Personal</h3>
+          <span class="item-price">$15,000</span>
+        </div>
+        <p class="item-desc">Chips con proteína, crema de frijol, salsa de ají, guacamole, pico de gallo y queso. Paquete 34gr</p>
+        <div class="item-tags" data-heat="2"></div>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <div class="food-circle big"><span class="circle-label">DORI XL</span></div>
+      <div class="item-body">
+        <div class="item-row">
+          <h3 class="item-name">Dorilocos Grande</h3>
+          <span class="item-price">$32,000</span>
+        </div>
+        <p class="item-desc">La versión XXL. Chips con proteína, crema de frijol, salsa de ají, guacamole, pico de gallo y queso. ¡Pa' compartir!</p>
+        <div class="item-tags" data-heat="2"><span class="tag tag-star">★ Pa' Compartir</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="papel" role="separator" aria-hidden="true"></div>
+
+  <!-- ===== TACOS — INVERTED ===== -->
+  <section class="section-inverted" id="tacos" data-section="tacos">
+    <div class="section-inner">
+      <div class="section-header">
+        <div>
+          <p class="section-eyebrow">Sección · 03</p>
+          <h2 class="section-title">Tacos<br><em>chingones</em></h2>
+        </div>
+        <span class="section-count">05 items</span>
+      </div>
+
+      <div class="menu-item">
+        <div class="food-circle"><span class="circle-label">AL PASTOR</span></div>
+        <div class="item-body">
+          <div class="item-row">
+            <h3 class="item-name">Taco Al Pastor</h3>
+            <span class="item-price">Consultar</span>
+          </div>
+          <p class="item-desc">Tortilla de maíz con carne al pastor, cebolla, cilantro y piña, bañada en salsas de la casa</p>
+          <div class="item-tags" data-heat="2"><span class="tag tag-star">★ Del Chef</span></div>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="food-circle"><span class="circle-label">CHICHA&shy;RRÓN</span></div>
+        <div class="item-body">
+          <div class="item-row">
+            <h3 class="item-name">Taco de Chicharrón</h3>
+            <span class="item-price">Consultar</span>
+          </div>
+          <p class="item-desc">Tortilla de maíz con chicharrón crujiente, cebolla, cilantro y salsa verde de la casa</p>
+          <div class="item-tags" data-heat="1"></div>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="food-circle"><span class="circle-label">CARNITAS</span></div>
+        <div class="item-body">
+          <div class="item-row">
+            <h3 class="item-name">Taco de Carnitas</h3>
+            <span class="item-price">Consultar</span>
+          </div>
+          <p class="item-desc">Tortilla de maíz con jugosas carnitas de cerdo, cebolla, cilantro y salsa roja de la casa</p>
+          <div class="item-tags" data-heat="1"></div>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="food-circle"><span class="circle-label">COCHI&shy;NITA</span></div>
+        <div class="item-body">
+          <div class="item-row">
+            <h3 class="item-name">Tostada Cochinita Pibil</h3>
+            <span class="item-price">Consultar</span>
+          </div>
+          <p class="item-desc">Tostada crujiente con cochinita pibil marinada en achiote, cebolla morada encurtida y habanero</p>
+          <div class="item-tags" data-heat="2"></div>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="food-circle"><span class="circle-label">TOSTADA POLLO</span></div>
+        <div class="item-body">
+          <div class="item-row">
+            <h3 class="item-name">Tostada de Pollo</h3>
+            <span class="item-price">Consultar</span>
+          </div>
+          <p class="item-desc">Tostada crujiente con pollo desmechado, lechuga, tomate, queso y crema de la casa</p>
+          <div class="item-tags" data-heat="1"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="papel" role="separator" aria-hidden="true"></div>
+
+  <!-- ===== BURRITOS ===== -->
+  <section class="menu-section" id="burritos" data-section="burritos">
+    <div class="section-header">
+      <div>
+        <p class="section-eyebrow">Sección · 04</p>
+        <h2 class="section-title">Burritos</h2>
+      </div>
+      <span class="section-count">03 items</span>
+    </div>
+
+    <div class="menu-item">
+      <div class="food-circle"><span class="circle-label">BURRITO P</span></div>
+      <div class="item-body">
+        <div class="item-row">
+          <h3 class="item-name">Burrito Pequeño</h3>
+          <span class="item-price">$22,500</span>
+        </div>
+        <p class="item-desc">Tortilla de trigo 27cm con carne desmechada, frijoles, arroz, queso, pico de gallo y crema</p>
+        <div class="item-tags" data-heat="1"></div>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <div class="food-circle"><span class="circle-label">BURRITO M</span></div>
+      <div class="item-body">
+        <div class="item-row">
+          <h3 class="item-name">Burrito Mediano</h3>
+          <span class="item-price">$27,000</span>
+        </div>
+        <p class="item-desc">Tortilla de trigo 30cm con carne desmechada, frijoles, arroz, queso, pico de gallo, guacamole y crema</p>
+        <div class="item-tags" data-heat="1"></div>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <div class="food-circle big"><span class="circle-label">BURRITO G</span></div>
+      <div class="item-body">
+        <div class="item-row">
+          <h3 class="item-name">Burrito Grande</h3>
+          <span class="item-price">$33,000</span>
+        </div>
+        <p class="item-desc">2 Tortillas de trigo 35cm con toda la carga: carne, frijoles, arroz, queso doble, pico de gallo, guacamole y crema. ¡El más chingón!</p>
+        <div class="item-tags" data-heat="1"><span class="tag tag-star">★ Mega</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="papel" role="separator" aria-hidden="true"></div>
+
+  <!-- ===== TORTAS & QUESADILLAS ===== -->
+  <section class="menu-section" id="tortas" data-section="tortas">
+    <div class="section-header">
+      <div>
+        <p class="section-eyebrow">Sección · 05</p>
+        <h2 class="section-title">Tortas &amp;<br><em>Quesadillas</em></h2>
+      </div>
+      <span class="section-count">07 items</span>
+    </div>
+
+    <p class="subsection-label">— Tortas del Chavo</p>
+
+    <div class="menu-item">
+      <div class="food-circle"><span class="circle-label">ROPA VIEJA</span></div>
+      <div class="item-body">
+        <div class="item-row">
+          <h3 class="item-name">Torta Ropa Vieja</h3>
+          <span class="item-price">$25,000</span>
+        </div>
+        <p class="item-desc">Res desmechada bañada en birria, chicharrón, maíz, pico de gallo, guacamole y queso</p>
+        <div class="item-tags" data-heat="2"></div>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <div class="food-circle"><span class="circle-label">COCHNI BBQ</span></div>
+      <div class="item-body">
+        <div class="item-row">
+          <h3 class="item-name">Torta Cochinita BBQ</h3>
+          <span class="item-price">$25,000</span>
+        </div>
+        <p class="item-desc">Cerdo desmechado con salsa BBQ, maíz, pico de gallo y queso</p>
+        <div class="item-tags" data-heat="1"></div>
+      </div>
+    </div>
+
+    <p class="subsection-label">— Las Quesadillas</p>
+
+    <div class="menu-item">
+      <div class="food-circle"><span class="circle-label">QUESO</span></div>
+      <div class="item-body">
+        <div class="item-row">
+          <h3 class="item-name">Quesadilla de Queso</h3>
+          <span class="item-price">$14,000</span>
+        </div>
+        <p class="item-desc">Tortilla de trigo a la plancha rellena de queso fundido</p>
+        <div class="item-tags" data-heat="0"><span class="tag tag-veg">VEG</span></div>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <div class="food-circle"><span class="circle-label">Q. JAMÓN</span></div>
+      <div class="item-body">
+        <div class="item-row">
+          <h3 class="item-name">Quesadilla Queso y Jamón</h3>
+          <span class="item-price">$15,000</span>
+        </div>
+        <p class="item-desc">Tortilla de trigo a la plancha con queso fundido y jamón</p>
+        <div class="item-tags" data-heat="0"></div>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <div class="food-circle"><span class="circle-label">Q. POLLO COCHNI</span></div>
+      <div class="item-body">
+        <div class="item-row">
+          <h3 class="item-name">Quesadilla Pollo y Cochinita</h3>
+          <span class="item-price">$18,000</span>
+        </div>
+        <p class="item-desc">Tortilla de trigo a la plancha con pollo y cochinita pibil, queso fundido</p>
+        <div class="item-tags" data-heat="1"></div>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <div class="food-circle"><span class="circle-label">Q. CHAMPI&shy;ÑÓN</span></div>
+      <div class="item-body">
+        <div class="item-row">
+          <h3 class="item-name">Quesadilla Pollo y Champiñón</h3>
+          <span class="item-price">$19,000</span>
+        </div>
+        <p class="item-desc">Tortilla de trigo a la plancha con pollo salteado, champiñones y queso fundido</p>
+        <div class="item-tags" data-heat="0"></div>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <div class="food-circle"><span class="circle-label">Q. CHICH</span></div>
+      <div class="item-body">
+        <div class="item-row">
+          <h3 class="item-name">Quesadilla de Chicharrón</h3>
+          <span class="item-price">$19,000</span>
+        </div>
+        <p class="item-desc">Tortilla de trigo a la plancha rellena de chicharrón crujiente y queso fundido</p>
+        <div class="item-tags" data-heat="1"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="papel" role="separator" aria-hidden="true"></div>
+
+  <!-- ===== ESPECIALIDADES ===== -->
+  <section class="menu-section" id="especialidades" data-section="especialidades">
+    <div class="section-header">
+      <div>
+        <p class="section-eyebrow">Sección · 06</p>
+        <h2 class="section-title">Especia&shy;lidades</h2>
+      </div>
+      <span class="section-count">10 items</span>
+    </div>
+
+    <div class="menu-item">
+      <div class="food-circle"><span class="circle-label">ELOTES LOCOS</span></div>
+      <div class="item-body">
+        <div class="item-row">
+          <h3 class="item-name">Elotes Locos</h3>
+          <span class="item-price">$14,000</span>
+        </div>
+        <p class="item-desc">Mazorca desgranada bañada en proteína, mayonesa de ajo, queso crema, parmesano y pizca de chile</p>
+        <div class="item-tags" data-heat="1"></div>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <div class="food-circle"><span class="circle-label">ESQUITES</span></div>
+      <div class="item-body">
+        <div class="item-row">
+          <h3 class="item-name">Esquites Verdes</h3>
+          <span class="item-price">$17,000</span>
+        </div>
+        <p class="item-desc">Mazorca desgranada bañada en proteína, mayonesa de ajo, queso parmesano y pizca de chile</p>
+        <div class="item-tags" data-heat="1"></div>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <div class="food-circle"><span class="circle-label">MEXI&shy;DOG</span></div>
+      <div class="item-body">
+        <div class="item-row">
+          <h3 class="item-name">Mexidog</h3>
+          <span class="item-price">$18,000</span>
+        </div>
+        <p class="item-desc">Pan con salchicha americana, jalapeños, carne desmechada, queso pollo, guacamole y queso</p>
+        <div class="item-tags" data-heat="2"><span class="tag tag-star">★ Popular</span></div>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <div class="food-circle"><span class="circle-label">BIRRIA BURGUER</span></div>
+      <div class="item-body">
+        <div class="item-row">
+          <h3 class="item-name">Birriaburguer</h3>
+          <span class="item-price">$18,000</span>
+        </div>
+        <p class="item-desc">Hamburguesa con carne de res bañada en birria, guacamole, pico de gallo y queso. Con caldo de birria</p>
+        <div class="item-tags" data-heat="2"><span class="tag tag-star">★ Especial</span></div>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <div class="food-circle big"><span class="circle-label">LA BANDIDA</span></div>
+      <div class="item-body">
+        <div class="item-row">
+          <h3 class="item-name">La Bandida</h3>
+          <span class="item-price">$22,000</span>
+        </div>
+        <p class="item-desc">Carne 150gr y carne de cerdo desmechada, queso cheddar, cebolla y piña caramelizada</p>
+        <div class="item-tags" data-heat="1"><span class="tag tag-star">★ Premium</span></div>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <div class="food-circle big"><span class="circle-label">PIZZA BIRRIA</span></div>
+      <div class="item-body">
+        <div class="item-row">
+          <h3 class="item-name">Pizza de Birria</h3>
+          <span class="item-price">$58,000</span>
+        </div>
+        <p class="item-desc">Tortilla de trigo 30cm con carne desmechada, cilantro, cebolla, tomate y queso. Acompañamiento: caldo de birria para dipear</p>
+        <div class="item-tags" data-heat="2"><span class="tag tag-star">★ La Reina</span></div>
+      </div>
+    </div>
+
+    <p class="subsection-label">— Patacones &amp; Conos</p>
+
+    <div class="menu-item">
+      <div class="food-circle"><span class="circle-label">PATA&shy;CÓN CHICH</span></div>
+      <div class="item-body">
+        <div class="item-row">
+          <h3 class="item-name">Patacón de Chicharrón</h3>
+          <span class="item-price">$17,000</span>
+        </div>
+        <p class="item-desc">Camarones bañados en queso y salsa blanca sobre patacón</p>
+        <div class="item-tags" data-heat="1"></div>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <div class="food-circle"><span class="circle-label">PATA&shy;CÓN MEX</span></div>
+      <div class="item-body">
+        <div class="item-row">
+          <h3 class="item-name">Patacón Mexicano</h3>
+          <span class="item-price">$18,000</span>
+        </div>
+        <p class="item-desc">Carne desmechada, frijoles refritos, maíz, jalapeños, guacamole, pico de gallo y queso</p>
+        <div class="item-tags" data-heat="2"></div>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <div class="food-circle"><span class="circle-label">CONO CHICH</span></div>
+      <div class="item-body">
+        <div class="item-row">
+          <h3 class="item-name">Cono de Chicharrón</h3>
+          <span class="item-price">$17,000</span>
+        </div>
+        <p class="item-desc">Cono con chicharrón, pico de gallo, queso, crema de queso y jalapeños</p>
+        <div class="item-tags" data-heat="2"></div>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <div class="food-circle"><span class="circle-label">CONO MEXICANO</span></div>
+      <div class="item-body">
+        <div class="item-row">
+          <h3 class="item-name">Cono Mexicano</h3>
+          <span class="item-price">$18,000</span>
+        </div>
+        <p class="item-desc">Carne desmechada, frijoles refritos, maíz, jalapeños, pico de gallo y queso</p>
+        <div class="item-tags" data-heat="2"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="papel" role="separator" aria-hidden="true"></div>
+
+  <!-- ===== PA' COMPARTIR ===== -->
+  <section class="menu-section" id="compartir" data-section="compartir">
+    <div class="section-header">
+      <div>
+        <p class="section-eyebrow">Sección · 07</p>
+        <h2 class="section-title">Pa'<br>Compartir</h2>
+      </div>
+      <span class="section-count">03 items</span>
+    </div>
+
+    <div class="menu-item">
+      <div class="food-circle big"><span class="circle-label">BIRRIA&shy;MEN</span></div>
+      <div class="item-body">
+        <div class="item-row">
+          <h3 class="item-name">Birriamen</h3>
+          <span class="item-price">$20,000</span>
+        </div>
+        <p class="item-desc">3 rosas con birria, fideo ramen, queso, cebolla, queso ricamment y pico de gallo</p>
+        <div class="item-tags" data-heat="3"><span class="tag tag-star">★ Favorito</span></div>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <div class="food-circle"><span class="circle-label">NACHOS LOCOS</span></div>
+      <div class="item-body">
+        <div class="item-row">
+          <h3 class="item-name">Nachos Locos</h3>
+          <span class="item-price">$24,000</span>
+        </div>
+        <p class="item-desc">Tortillas de maíz fritas con frijoles, guacamole, pico de gallo, queso fundido y proteína</p>
+        <div class="item-tags" data-heat="2"></div>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <div class="food-circle big"><span class="circle-label">ENCHI&shy;LADAS</span></div>
+      <div class="item-body">
+        <div class="item-row">
+          <h3 class="item-name">Enchiladas</h3>
+          <span class="item-price">$35,000</span>
+        </div>
+        <p class="item-desc">Tres tortillas rellenas de proteína bañadas en birria, con arroz, pico de gallo, guacamole y queso gratinado</p>
+        <div class="item-tags" data-heat="2"><span class="tag tag-star">★ Pa' Compartir</span></div>
+      </div>
+    </div>
+
+    <p class="subsection-label">— Adiciones</p>
+    <div class="price-list">
+      <div class="price-row"><span class="pr-name">Guacamole</span><span class="pr-price">$4,500</span></div>
+      <div class="price-row"><span class="pr-name">Queso</span><span class="pr-price">$4,500</span></div>
+      <div class="price-row"><span class="pr-name">Proteína</span><span class="pr-price">$5,500</span></div>
+      <div class="price-row"><span class="pr-name">Porción de Papa</span><span class="pr-price">$5,500</span></div>
+    </div>
+  </section>
+
+  <div class="papel" role="separator" aria-hidden="true"></div>
+
+  <!-- ===== BEBIDAS ===== -->
+  <section class="menu-section" id="bebidas" data-section="bebidas">
+    <div class="section-header">
+      <div>
+        <p class="section-eyebrow">Sección · 08</p>
+        <h2 class="section-title">Bebidas</h2>
+      </div>
+    </div>
+
+    <p class="subsection-label">— Jugos Naturales</p>
+    <div class="price-list">
+      <div class="price-row"><span class="pr-name">Mandarina (en agua)</span><span class="pr-price">$6,000</span></div>
+      <div class="price-row"><span class="pr-name">Naranja (en leche)</span><span class="pr-price">$7,000</span></div>
+      <div class="price-row"><span class="pr-name">Tamarindo</span><span class="pr-price">Consultar</span></div>
+      <div class="price-row"><span class="pr-name">Borojó</span><span class="pr-price">Consultar</span></div>
+      <div class="price-row"><span class="pr-name">Uva</span><span class="pr-price">Consultar</span></div>
+      <div class="price-row"><span class="pr-name">Mango</span><span class="pr-price">Consultar</span></div>
+      <div class="price-row"><span class="pr-name">Maracuyá</span><span class="pr-price">Consultar</span></div>
+      <div class="price-row"><span class="pr-name">Fresa</span><span class="pr-price">Consultar</span></div>
+      <div class="price-row"><span class="pr-name">Mora</span><span class="pr-price">Consultar</span></div>
+      <div class="price-row"><span class="pr-name">Lulo</span><span class="pr-price">Consultar</span></div>
+      <div class="price-row"><span class="pr-name">Guanábana</span><span class="pr-price">Consultar</span></div>
+    </div>
+
+    <p class="subsection-label">— Jugos Especiales</p>
+    <div class="price-list">
+      <div class="price-row"><span class="pr-name">Frutos Rojos (en agua)</span><span class="pr-price">Consultar</span></div>
+      <div class="price-row"><span class="pr-name">Frutos Amarillos</span><span class="pr-price">$7,000</span></div>
+      <div class="price-row"><span class="pr-name">Jugo Verde (en leche)</span><span class="pr-price">$8,000</span></div>
+      <div class="price-row"><span class="pr-name">Maracumango</span><span class="pr-price">Consultar</span></div>
+    </div>
+
+    <p class="subsection-label">— Limonadas</p>
+    <div class="price-list">
+      <div class="price-row"><span class="pr-name">Natural</span><span class="pr-price">$6,000</span></div>
+      <div class="price-row"><span class="pr-name">Maracumango</span><span class="pr-price">$10,000</span></div>
+      <div class="price-row"><span class="pr-name">Cerezada</span><span class="pr-price">$9,000</span></div>
+      <div class="price-row"><span class="pr-name">Coco</span><span class="pr-price">$12,000</span></div>
+    </div>
+
+    <p class="subsection-label">— Aguas del Chavo</p>
+    <div class="price-list">
+      <div class="price-row"><span class="pr-name">Jamaica</span><span class="pr-price">$9,000</span></div>
+      <div class="price-row"><span class="pr-name">Tamarindo</span><span class="pr-price">$9,000</span></div>
+      <div class="price-row"><span class="pr-name">Horchata</span><span class="pr-price">$9,000</span></div>
+    </div>
+
+    <p class="subsection-label">— Sodas &amp; Gaseosas</p>
+    <div class="price-list">
+      <div class="price-row"><span class="pr-name">Frutos Amarillos (Soda)</span><span class="pr-price">$9,000</span></div>
+      <div class="price-row"><span class="pr-name">Frutos Rojos (Soda)</span><span class="pr-price">$9,000</span></div>
+      <div class="price-row"><span class="pr-name">Coca Cola 400ml</span><span class="pr-price">$4,000</span></div>
+      <div class="price-row"><span class="pr-name">Quatro 400ml</span><span class="pr-price">$4,000</span></div>
+      <div class="price-row"><span class="pr-name">Sprite 400ml</span><span class="pr-price">$4,000</span></div>
+      <div class="price-row"><span class="pr-name">Tea Durazno / Limón</span><span class="pr-price">$4,000</span></div>
+      <div class="price-row"><span class="pr-name">Agua Manzana</span><span class="pr-price">$4,000</span></div>
+      <div class="price-row"><span class="pr-name">Soda Schweppes</span><span class="pr-price">$4,000</span></div>
+      <div class="price-row"><span class="pr-name">Agua Sin Gas</span><span class="pr-price">$3,000</span></div>
+      <div class="price-row"><span class="pr-name">Coca Cola 250ml</span><span class="pr-price">$3,000</span></div>
+    </div>
+
+    <p class="subsection-label">— Malteadas</p>
+    <div class="price-list">
+      <div class="price-row"><span class="pr-name">Café</span><span class="pr-price">$20,000</span></div>
+      <div class="price-row"><span class="pr-name">Chocolate</span><span class="pr-price">$20,000</span></div>
+      <div class="price-row"><span class="pr-name">Arequipe</span><span class="pr-price">$20,000</span></div>
+      <div class="price-row"><span class="pr-name">Frutos Rojos</span><span class="pr-price">$20,000</span></div>
+      <div class="price-row"><span class="pr-name">Frutos Amarillos</span><span class="pr-price">$20,000</span></div>
+      <div class="price-row"><span class="pr-name">Tamarindo</span><span class="pr-price">$20,000</span></div>
+    </div>
+
+    <p class="subsection-label">— Cervezas</p>
+    <div class="price-list">
+      <div class="price-row"><span class="pr-name">Poker</span><span class="pr-price">$4,000</span></div>
+      <div class="price-row"><span class="pr-name">Águila</span><span class="pr-price">$4,000</span></div>
+      <div class="price-row"><span class="pr-name">Budweiser</span><span class="pr-price">$4,000</span></div>
+      <div class="price-row"><span class="pr-name">Coronita</span><span class="pr-price">$5,000</span></div>
+      <div class="price-row"><span class="pr-name">Club Colombia</span><span class="pr-price">$5,000</span></div>
+      <div class="price-row"><span class="pr-name">Heineken</span><span class="pr-price">$5,000</span></div>
+      <div class="price-row"><span class="pr-name">Corona</span><span class="pr-price">$7,000</span></div>
+    </div>
+
+    <p class="subsection-label">— Micheladas</p>
+    <div class="price-list">
+      <div class="price-row"><span class="pr-name">Michelada Clásica</span><span class="pr-price">$4,500</span></div>
+      <div class="price-row"><span class="pr-name">Michelada Tamarindo</span><span class="pr-price">$6,500</span></div>
+    </div>
+
+    <p class="subsection-label">— Guarapos del Rinconcito</p>
+    <div class="price-list">
+      <div class="price-row"><span class="pr-name">Maracuyá</span><span class="pr-price">$9,000</span></div>
+      <div class="price-row"><span class="pr-name">Jamaica</span><span class="pr-price">$9,000</span></div>
+      <div class="price-row"><span class="pr-name">Tamarindo</span><span class="pr-price">$9,000</span></div>
+      <div class="price-row"><span class="pr-name">Jengibre</span><span class="pr-price">$9,000</span></div>
+    </div>
+  </section>
+
+  <div class="papel" role="separator" aria-hidden="true"></div>
+
+  <!-- ===== COCTELES ===== -->
+  <section class="menu-section" id="cocteles" data-section="cocteles">
+    <div class="section-header">
+      <div>
+        <p class="section-eyebrow">Sección · 09</p>
+        <h2 class="section-title">Cocteles</h2>
+      </div>
+    </div>
+
+    <p class="subsection-label">— Gin</p>
+    <div class="price-list">
+      <div class="price-row"><span class="pr-name">Gin Tonic</span><span class="pr-price">$22,000</span></div>
+      <div class="price-row"><span class="pr-name">Negroni</span><span class="pr-price">$26,000</span></div>
+      <div class="price-row"><span class="pr-name">Martini</span><span class="pr-price">$25,000</span></div>
+    </div>
+
+    <p class="subsection-label">— Tequila</p>
+    <div class="price-list">
+      <div class="price-row"><span class="pr-name">Los Cuates</span><span class="pr-price">$25,000</span></div>
+      <div class="price-row"><span class="pr-name">Margarita</span><span class="pr-price">$20,000</span></div>
+      <div class="price-row"><span class="pr-name">Tegroni</span><span class="pr-price">$26,000</span></div>
+    </div>
+
+    <p class="subsection-label">— Vodka</p>
+    <div class="price-list">
+      <div class="price-row"><span class="pr-name">Blue Lagoon</span><span class="pr-price">$20,000</span></div>
+      <div class="price-row"><span class="pr-name">Expreso Martini</span><span class="pr-price">$20,000</span></div>
+      <div class="price-row"><span class="pr-name">Ruso Blanco</span><span class="pr-price">$20,000</span></div>
+    </div>
+
+    <p class="subsection-label">— Guaro</p>
+    <div class="price-list">
+      <div class="price-row"><span class="pr-name">Passion Guaro</span><span class="pr-price">$22,000</span></div>
+      <div class="price-row"><span class="pr-name">Caipirinha</span><span class="pr-price">$20,000</span></div>
+    </div>
+
+    <p class="subsection-label">— Ron</p>
+    <div class="price-list">
+      <div class="price-row"><span class="pr-name">Daiquiri</span><span class="pr-price">$15,000</span></div>
+      <div class="price-row"><span class="pr-name">Cuba Libre</span><span class="pr-price">$15,000</span></div>
+      <div class="price-row"><span class="pr-name">Alexander</span><span class="pr-price">$15,000</span></div>
+      <div class="price-row"><span class="pr-name">Mojito</span><span class="pr-price">$20,000</span></div>
+      <div class="price-row"><span class="pr-name">Bull</span><span class="pr-price">$20,000</span></div>
+    </div>
+
+    <p class="subsection-label">— Whisky</p>
+    <div class="price-list">
+      <div class="price-row"><span class="pr-name">Old Fashioned</span><span class="pr-price">$26,000</span></div>
+      <div class="price-row"><span class="pr-name">Padrino</span><span class="pr-price">$26,000</span></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <p class="footer-brand">¡Buen<br>provecho!</p>
+  <p class="footer-tagline">Rinconcito Los Cuates · Sabor Mexicano con Actitud</p>
+  <div class="social-row">
+    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+      <i class="fab fa-tiktok"></i>
+    </a>
+    <a href="https://wa.me/57?text=Hola%20Los%20Cuates!%20Quiero%20hacer%20un%20pedido" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+  </div>
+  <p class="footer-copy">© 2026 Rinconcito Los Cuates</p>
+</footer>
+
+<!-- WhatsApp flotante -->
+<a href="https://wa.me/57?text=Hola%20Los%20Cuates!%20Quiero%20hacer%20un%20pedido"
+   class="whatsapp-float"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Hacer pedido por WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+  <span class="wa-label">Haz tu pedido aquí</span>
+</a>
+
+<script src="script.js"></script>
+</body>
+</html>
