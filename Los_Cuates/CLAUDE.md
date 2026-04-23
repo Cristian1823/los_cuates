@@ -44,6 +44,22 @@ Los_Cuates/
     ├── logo.jpeg           # Logo a color (header + watermark)
 ```
 
+## URLs de Producción
+
+| Página | URL |
+|--------|-----|
+| Menú público | `https://cristian1823.github.io/los_cuates/Los_Cuates/` |
+| Pedidos | `https://cristian1823.github.io/los_cuates/Los_Cuates/pedidos.html` |
+| Cocina | `https://cristian1823.github.io/los_cuates/Los_Cuates/cocina.html` |
+| Para Pago | `https://cristian1823.github.io/los_cuates/Los_Cuates/domicilio.html` |
+| Cierre | `https://cristian1823.github.io/los_cuates/Los_Cuates/cierre.html` |
+| Clientes | `https://cristian1823.github.io/los_cuates/Los_Cuates/clientes.html` |
+| Inventario | `https://cristian1823.github.io/los_cuates/Los_Cuates/inventario.html` |
+| Tarjeta QR | `https://cristian1823.github.io/los_cuates/Los_Cuates/tarjeta.html` |
+
+**GitHub Pages:** rama `main`, carpeta `/` (root). Deploy automático con cada `git push`.
+**Repositorio:** `https://github.com/Cristian1823/los_cuates`
+
 ## API — Google Apps Script (YA CONFIGURADA)
 
 - **URL:** `https://script.google.com/macros/s/AKfycbzZE0Tr6bVMtgxRHxeA5miq0h4CMiSnz_ZNr6f9PpXN64OEInlQf9W2v4OKpUb84KFRzQ/exec`
