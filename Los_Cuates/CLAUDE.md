@@ -110,7 +110,7 @@ Los_Cuates/
 
 ## Namespace JavaScript
 
-Toda la lógica del sistema vive en `window.CUATES` (sistema.js). **Nunca usar `window.GOSA`**.
+Toda la lógica del sistema vive en `window.CUATES` (sistema.js).
 
 - Cache de productos: `cuates_productos_cache` (localStorage, 24h TTL)
 - Cache de reportes mensuales: `cuates_reporte_mes_YYYY-MM` (localStorage)
@@ -465,4 +465,3 @@ Tacos regulares: $6,900 c/u · ×3 $20,700. Taco Marino: $7,900 c/u · ×3 $23,7
 
 **Versión:** 5.1.0
 **Fecha:** Abril 2026
-**Basado en:** GOSA Food Truck v4.2.0
