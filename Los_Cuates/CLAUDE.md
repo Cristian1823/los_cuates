@@ -147,16 +147,32 @@ linear-gradient(168deg, #FFFDE7 0%, #FAEEDA 18%, #FFE878 40%, #FFD60A 60%, #FFD6
 
 **Marca de agua:** `body::before` — logo fijo inferior derecha, `z-index: 9999`, `opacity: 0.22`, `filter: grayscale(100%)`, `mix-blend-mode: soft-light`
 
-**Estructura del menú (9 secciones con chips nav sticky):**
-1. `#antojitos` — Canasticas, Birriamen
-2. `#dorilocos` — Dorilocos (sección propia, no subsección)
-3. `#tacos` — `.section-inverted` (fondo `#0B0B0B`, texto `#FFD60A`)
-4. `#burritos`
-5. `#tortas` — Tortas + Quesadillas
-6. `#especialidades`
-7. `#compartir` — Pa' Compartir
-8. `#bebidas`
-9. `#cocteles`
+**Estructura del menú (18 secciones con chips nav sticky):**
+
+| # | ID | Nombre | Fondo |
+|---|----|--------|-------|
+| 01 | `#antojitos` | Antojitos | Dorado |
+| 02 | `#dorilocos` | Dorilocos | Dorado |
+| 03 | `#birriamen` | Birriamen | **Negro** `.section-inverted` |
+| 04 | `#tacos` | Tacos Chingones | **Negro** `.section-inverted` |
+| 05 | `#burritos` | Burritos | Dorado |
+| 06 | `#tortas` | Tortas del Chavo | Dorado |
+| 07 | `#quesadillas` | Quesadillas | **Negro** `.section-inverted` |
+| 08 | `#patacones` | Patacones | **Negro** `.section-inverted` |
+| 09 | `#conos` | Conos | Dorado |
+| 10 | `#elotes` | Elotes Locos | Dorado |
+| 11 | `#esquites` | Esquites Verdes | **Negro** `.section-inverted` |
+| 12 | `#mexidog` | Mexidog | **Negro** `.section-inverted` |
+| 13 | `#birriaburguer` | Birriaburguer | Dorado |
+| 14 | `#bandida` | La Bandida | Dorado |
+| 15 | `#compartir` | Pa' Compartir | **Negro** `.section-inverted` |
+| 16 | `#postres` | Postres | **Negro** `.section-inverted` |
+| 17 | `#bebidas` | Bebidas | Dorado |
+| 18 | `#cocteles` | Cocteles | Dorado |
+
+**Patrón de colores:** alternancia 2 dorado / 2 negro a lo largo del scroll.
+
+**Secciones `.section-inverted`:** usan `<section class="section-inverted">` (sin `menu-section`) + `<div class="section-inner">` envolviendo todo el contenido. Fondo `#0B0B0B` full-width, texto `#FFD60A`.
 
 **Chile icons:** JS lee `data-heat="0|1|2|3"` e inyecta SVGs. `data-heat="0"` = sin íconos.
 
@@ -206,65 +222,116 @@ body { background: #FFD60A !important; background-image: none !important; }
 ### Antojitos
 | Producto | Precio |
 |----------|--------|
+| Totopos con Guacamole | $11,000 |
 | Canastica Chica | $11,000 |
 | Canastica Mediana | $15,000 |
 | Canastica Grande | $17,000 |
-| Birriamen | $20,000 |
 
-### Dorilocos (sección propia)
+### Dorilocos
 | Producto | Precio |
 |----------|--------|
 | Dorilocos Chicos | $15,000 |
 | Dorilocos Grandes | $32,000 |
 
-### Tacos
-Precio a consultar (varían por proteína/tipo). Se muestra "Consultar" en el menú público.
+### Birriamen
+| Producto | Precio |
+|----------|--------|
+| Birriamen | $20,000 |
+
+### Tacos Chingones
+| Producto | 1 unidad | ×3 |
+|----------|----------|----|
+| Taco Al Pastor | $6,900 | $20,700 |
+| Taco de Chicharrón | $6,900 | $20,700 |
+| Taco de Carnitas | $6,900 | $20,700 |
+| Tostada Cochinita Pibil | $6,900 | $20,700 |
+| Tostada de Pollo | $6,900 | $20,700 |
+| Taco Marino | $7,900 | $23,700 |
 
 ### Burritos
 | Producto | Precio |
 |----------|--------|
-| Burrito Chico | $22,500 |
-| Burrito Mediano | $27,000 |
-| Burrito Grande | $33,000 |
+| Burrito Tamaño S (Tortilla 27cm) | $22,500 |
+| Burrito Tamaño M (Tortilla 30cm) | $27,000 |
+| Burrito Tamaño L (2 Tortillas 25cm) | $33,000 |
 
-### Tortas
+### Tortas del Chavo
 | Producto | Precio |
 |----------|--------|
 | Torta de Birria | $25,000 |
 | Torta de Pollo | $25,000 |
+| Torta Ropa Vieja | $25,000 |
+| Torta de Chicharrón | $25,000 |
 
 ### Quesadillas
 | Producto | Precio |
 |----------|--------|
-| Quesadilla Sencilla | $14,000 |
-| Quesadilla con Proteína | $17,000 |
-| Quesadilla Especial | $19,000 |
+| Quesadilla Pollo y Champiñón | $19,900 |
+| Quesadilla de Carne Desmechada | $19,900 |
+| Quesadilla de Chicharrón | $19,900 |
+| Quesadilla de Queso | $15,000 |
+| Quesadilla de Queso y Jamón | $15,000 |
 
-### Especialidades
+### Patacones
 | Producto | Precio |
 |----------|--------|
-| Patakón Sencillo | $17,000 |
-| Patakón Especial | $18,000 |
-| Cono Sencillo | $17,000 |
-| Cono Especial | $18,000 |
-| Elotes | $14,000 |
-| Esquites | $17,000 |
+| Patacón de Chicharrón | $17,000 |
+| Patacón Mexicano | $18,000 |
+| Patacón de Camarón | $17,000 |
+
+### Conos
+| Producto | Precio |
+|----------|--------|
+| Cono de Chicharrón | $17,000 |
+| Cono de Camarón | $18,000 |
+
+### Elotes Locos
+| Producto | Precio |
+|----------|--------|
+| Elotes Locos | $14,000 |
+
+### Esquites Verdes
+| Producto | Precio |
+|----------|--------|
+| Esquites Verdes | $17,000 |
+
+### Mexidog
+| Producto | Precio |
+|----------|--------|
 | Mexidog | $18,000 |
+
+### Birriaburguer
+| Producto | Precio |
+|----------|--------|
 | Birriaburguer | $18,000 |
+
+### La Bandida
+| Producto | Precio |
+|----------|--------|
 | La Bandida | $22,000 |
 
 ### Pa' Compartir
 | Producto | Precio |
 |----------|--------|
-| Nachos | $24,000 |
+| Pizza de Birria | $58,000 |
+| Nachos Locos | $24,000 |
 | Enchiladas | $35,000 |
-| Pizza Birria | $58,000 |
 
-### Adiciones
+### Adiciones (dentro de Pa' Compartir)
 | Producto | Precio |
 |----------|--------|
-| Adición sencilla | $4,500 |
-| Adición especial | $5,500 |
+| Guacamole | $4,500 |
+| Proteína | $6,000 |
+| Queso | $4,500 |
+| Jalapeños | $2,500 |
+| Porción de Papa | $5,500 |
+
+### Postres
+| Producto | Precio |
+|----------|--------|
+| Quesadilla Nutella | $15,000 |
+| Quesadilla Arequipe | $15,000 |
+| Croissant Relleno | $13,000 |
 
 ### Bebidas (no alcohólicas)
 | Producto | Precio |
@@ -385,7 +452,7 @@ Cada página puede sobreescribir el fondo base de `sistema.css` con un `<style>`
 Buscar en `clientes.html` y `tarjeta.html` el texto "TACO DE BIRRIA GRATIS" y reemplazarlo.
 
 ### Actualizar precios de tacos
-Los tacos tienen precio 0 en `sistema.js` (se muestra "Consultar"). Actualizar en `sistema.js` (objeto `MENU.tacos`) y en la hoja `Productos` de Sheets.
+Tacos regulares: $6,900 c/u · ×3 $20,700. Taco Marino: $7,900 c/u · ×3 $23,700. Actualizar en `index.html` (span `.item-price`) y en la hoja `Productos` de Sheets.
 
 ### Componente `.section-title-bar` (subsecciones en Bebidas)
 ```html
@@ -396,6 +463,6 @@ Los tacos tienen precio 0 en `sistema.js` (se muestra "Consultar"). Actualizar e
 
 ---
 
-**Versión:** 5.0.0
+**Versión:** 5.1.0
 **Fecha:** Abril 2026
 **Basado en:** GOSA Food Truck v4.2.0
