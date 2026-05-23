@@ -287,6 +287,26 @@ body {
   margin: 28px 0 16px;
 }
 
+.subsection-label-star {
+  font-family: var(--font-display);
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 28px 0 14px;
+  color: var(--color-gold);
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.subsection-label-star::before {
+  content: '⭐';
+  font-size: 18px;
+}
+.section-inverted .subsection-label-star {
+  color: #FFD60A;
+}
+
 /* ===== MENU ITEM ===== */
 .menu-item {
   display: flex;
@@ -423,6 +443,9 @@ body {
 .section-inverted .section-title em { color: #FFD60A; }
 .section-inverted .section-count   { color: #FFD60A; opacity: 0.35; }
 .section-inverted .subsection-label { color: #FFD60A; opacity: 0.38; }
+.section-inverted .pr-name  { color: rgba(255,214,10,0.7); }
+.section-inverted .pr-price { color: #FFD60A; }
+.section-inverted .price-row { border-bottom-color: rgba(255,214,10,0.12); }
 
 .section-inverted .menu-item                     { border-bottom-color: rgba(255,214,10,0.12); }
 .section-inverted .menu-item:last-of-type        { border-bottom: none; }
@@ -441,6 +464,198 @@ body {
 .section-inverted .circle-label { color: rgba(255,214,10,0.5); }
 .section-inverted .item-name    { color: #FFD60A; }
 .section-inverted .item-price   { color: #FFD60A; }
+
+/* Tarjeta Burritos (Especialidades) */
+.burrito-card {
+  padding: 20px 28px 24px;
+  border-top: 2px solid rgba(26,10,0,0.12);
+}
+.burrito-label {
+  font-family: 'Anton', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-gold-dark);
+  margin: 0 0 10px;
+}
+.burrito-sizes {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+.bsize {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.bsize-letter {
+  font-family: 'Anton', sans-serif;
+  font-size: 1.6rem;
+  color: var(--color-gold-dark);
+  line-height: 1;
+  min-width: 22px;
+}
+.bsize-mega .bsize-letter { font-size: 2rem; }
+.bsize-detail {
+  font-size: 0.78rem;
+  color: rgba(26,10,0,0.55);
+  flex: 1;
+}
+.bsize-price {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #1A0A00;
+}
+.burrito-proteins {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.83rem;
+  color: rgba(26,10,0,0.75);
+  margin: 0 0 14px;
+  line-height: 1.5;
+}
+.burrito-includes {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(26,10,0,0.6);
+  margin: 0;
+  border-top: 1px solid rgba(26,10,0,0.1);
+  padding-top: 10px;
+}
+.burrito-includes strong { color: #1A0A00; }
+
+/* Tarjeta Jugos Naturales / Especiales */
+.jugo-card {
+  margin: 0 0 20px;
+  padding: 16px 20px;
+  background: rgba(255,255,255,0.45);
+  border-radius: 12px;
+  border: 1.5px solid rgba(196,112,8,0.2);
+}
+.jugo-prices {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 14px;
+}
+.jugo-option {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.jugo-tipo {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  color: rgba(26,10,0,0.6);
+  text-align: center;
+}
+.jugo-price {
+  font-family: 'Anton', sans-serif;
+  font-size: 1.4rem;
+  color: var(--color-gold-dark);
+  line-height: 1;
+}
+.jugo-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(196,112,8,0.25);
+  margin: 0 12px;
+}
+.jugo-sabores-label {
+  font-family: 'Anton', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(26,10,0,0.45);
+  margin: 0 0 6px;
+}
+.jugo-sabores {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  color: rgba(26,10,0,0.75);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ===== CONECTOR CERVEZAS + MICHELADAS ===== */
+.cerveza-bridge {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #0B0B0B;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 8px 0 6px;
+  border-left: 3px solid #FFD60A;
+}
+.cerveza-bridge-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+  font-size: 22px;
+  line-height: 1.2;
+}
+.cerveza-bridge-msg {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-style: italic;
+  color: rgba(255, 214, 10, 0.88);
+  line-height: 1.5;
+}
+.cerveza-bridge-msg strong {
+  color: #FFD60A;
+  font-style: normal;
+  font-size: 0.78rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* Layout superior burrito: tamaños a la izquierda, círculo a la derecha */
+.burrito-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.burrito-left { flex: 1; }
+
+/* Precio con iconos de taco (sección Tacos) */
+.taco-price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  line-height: 1.3;
+  color: #FFD60A;
+}
+.taco-price .tp-unit {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  opacity: 0.75;
+}
+.taco-price .tp-trio {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.taco-price .tp-icon {
+  font-style: normal;
+  letter-spacing: -2px;
+  font-size: 0.85rem;
+}
 .section-inverted .item-desc    { color: rgba(255,214,10,0.55); }
 .section-inverted .tag-star     { background: var(--color-gold-light); color: #1A0A00; }
 .section-inverted .tag-outline  { border-color: rgba(255,214,10,0.5); color: #FFD60A; }
